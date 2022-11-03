@@ -21,5 +21,11 @@ app.get('/', (req, res) => {
 })
 
 app.post('/operand', (req, res) => {
-
+  const body = req.body
+  console.log(body)
+  if(body.operation_type = 'addition'){
+    result = Number(body.x) + Number(body.y)
+  }
+  console.log(result)
+  res.send('Done')
 })
