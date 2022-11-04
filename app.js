@@ -29,17 +29,28 @@ app.post('/operand', (req, res) => {
     if(body.operation_type === 'addition'){
       result = Number(body.x) + Number(body.y)
       res.json({
-      slackUsername: myData.slackUsername,
-      operation_type: body.operation_type,
-      result: result
+            slackUsername: myData.slackUsername,
+            result: result,
+            operation_type: body.operation_type,
       })
     }else if(body.operation_type === 'subtraction'){
             result = Number(body.x) - Number(body.y)
             res.json({
             slackUsername: myData.slackUsername,
+            result: result,
             operation_type: body.operation_type,
-            result: result
             })
+    }else if(body.operation_type === 'multiplication'){
+            result = Number(body.x) * Number(body.y)
+            res.json({
+            slackUsername: myData.slackUsername,
+            result: result,
+            operation_type: body.operation_type,
+            })
+    }else {
+      res.json({
+        message: "Incorrect Input"
+      })
     }
   } catch {
     res.json({
