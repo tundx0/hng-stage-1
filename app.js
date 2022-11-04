@@ -21,11 +21,30 @@ app.get('/', (req, res) => {
 })
 
 app.post('/operand', (req, res) => {
+  try{
   const body = req.body
-  console.log(body)
-  if(body.operation_type = 'addition'){
+  // console.log(typeof body.operation_type)
+  if(body.operation_type === 'addition'){
     result = Number(body.x) + Number(body.y)
+    res.json({
+    slackUsername: 'Tundx0',
+    operation_type: 'addition',
+    result: result
+  })
   }
-  console.log(result)
-  res.send('Done')
+  } catch {
+    res.json({
+      status: res.statusCode,
+      message: "Incorrect Input",
+
+    })
+  }
+
+  // console.log(result)
+
+  // res.send(  JSON.stringify({
+  //   slackUsername: 'Tundx0',
+  //   operation_type: 'addition',
+  //   result: result
+  // }))
 })
